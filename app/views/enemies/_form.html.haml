@@ -1,0 +1,14 @@
+= simple_form_for @enemy do |form|
+
+  -if @enemy.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@enemy.errors.count, "error")} prohibited this #{Enemy.name.titleize} from being saved:"
+      %ul
+        - @enemy.errors.full_messages.each do |msg|
+          %li= msg  
+
+  = form.input :name, :label => 'Name'
+  = form.input :reason, :label => 'Reason'
+
+  .actions
+    = form.button :submit
